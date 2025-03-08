@@ -49,8 +49,6 @@ body {
 
 .main-grid {
     background-color: black;
-    /*min-width: 100vw;*/
-    /*min-height: 100vh;*/
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -61,6 +59,10 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+}
+
+.view-container {
+    max-height: 95vh;
 }
 
 .container-style {
@@ -78,6 +80,7 @@ body {
     background-color: #171717;
     padding: 2rem;
     border-radius: 5px;
+    row-gap: 2rem;
 }
 
 .form-header {
@@ -85,6 +88,10 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: .5rem;
+}
+
+.form-header > div > button {
     margin: .5rem;
 }
 
@@ -104,6 +111,7 @@ input {
 .form-style {
     display: grid;
     grid-template: 1fr 1fr 1fr 1fr/1fr 1fr;
+    /*row-gap: 2rem;*/
 }
 
 /*grid spans*/
@@ -119,7 +127,7 @@ input {
     grid-column: span 2;
 }
 
-form>button {
+form > button {
     grid-column: span 2;
     margin: .5rem;
 }

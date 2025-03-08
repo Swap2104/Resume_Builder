@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import './styles/App.css'
+import {EducationForm} from "./components/EducationForm.jsx";
 
 function App() {
     // personal data state to store data from personal form section
@@ -11,6 +12,14 @@ function App() {
         position: "Current Position"
     })
 
+    const [educationList, setEducationList] = useState([{
+        id: 0,
+        instituteName: "Institute Name",
+        instituteEmail: "Institute Email",
+        instituteAddress: "Institute Address",
+        courseCompleted: "Course Completed"
+    }])
+
     // Stores data from personal info form into state var
     function handlePersonalInfo(formData) {
         setPersonalData({
@@ -20,6 +29,18 @@ function App() {
             position: formData.get('position'),
             number: formData.get('number')
         })
+    }
+
+    function addEducationForm() {
+        // can only add 3 forms
+        educationList.length < 3 ? setEducationList([...educationList, {id: educationList.id++}]) : setEducationList([...educationList]);
+        // console.log(educationList)
+    }
+
+    function removeEducationForm() {
+        // can only delete form if forms are more than one.
+        educationList.length > 1 ? setEducationList([...educationList.slice(0, educationList.length - 1)]) : setEducationList([...educationList.slice(0, educationList.length)]);
+        // console.log(educationList.length)
     }
 
     return (<>
@@ -42,15 +63,15 @@ function App() {
                 <div>
                     <div className={'form-header'}>
                         <h3>Education</h3>
-                        <button>Add Education</button>
+                        <div>
+                            <button onClick={removeEducationForm}>Remove Education</button>
+                            <button onClick={addEducationForm}>Add Education</button>
+                        </div>
                     </div>
-                    <form className="education-exp form-style">
-                        <input type={"text"} placeholder="Institute Name"/>
-                        <input type={"email"} placeholder="Institute Email"/>
-                        <input type={"text"} placeholder="Institute Address"/>
-                        <input type={"text"} placeholder="Course Completed"/>
-                        <button type={"submit"}>Submit</button>
-                    </form>
+                    {/*Education form*/}
+                    {educationList.map(education => {
+                        return (<EducationForm/>);
+                    })}
                 </div>
                 <div>
                     <div className={'form-header'}>
