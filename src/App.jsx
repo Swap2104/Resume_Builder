@@ -2,7 +2,12 @@ import {useState} from 'react'
 import './styles/App.css'
 import {EducationForm} from "./components/EducationForm.jsx";
 
+
 function App() {
+    // stores id's for educationList state
+    let educationId = 0;
+
+
     // personal data state to store data from personal form section
     const [personalData, setPersonalData] = useState({
         firstName: "First name",
@@ -33,8 +38,18 @@ function App() {
 
     function addEducationForm() {
         // can only add 3 forms
-        educationList.length < 3 ? setEducationList([...educationList, {id: educationList.id++}]) : setEducationList([...educationList]);
-        // console.log(educationList)
+        if (educationList.length < 3) {
+            educationId += 1
+            setEducationList([...educationList, {
+                id: educationId, instituteName: "Institute Name",
+                instituteEmail: "Institute Email",
+                instituteAddress: "Institute Address",
+                courseCompleted: "Course Completed"
+            }])
+        } else {
+            setEducationList([...educationList]);
+        }
+        console.log(educationList)
     }
 
     function removeEducationForm() {
@@ -70,7 +85,11 @@ function App() {
                     </div>
                     {/*Education form*/}
                     {educationList.map(education => {
-                        return (<EducationForm/>);
+                        return (<EducationForm id={education.id}
+                                               instituteName={education.instituteName}
+                                               instituteAddress={education.instituteAddress}
+                                               instituteEmail={education.instituteEmail}
+                                               courseCompleted={education.courseCompleted}/>);
                     })}
                 </div>
                 <div>
