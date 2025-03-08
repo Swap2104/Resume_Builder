@@ -32,16 +32,25 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-input[type=number]{
+input[type=number] {
     -moz-appearance: textfield;
+}
+
+#root {
+    width: 100%;
+    height: 100vh;
+}
+
+body {
+    background-color: black;
 }
 
 /*gird*/
 
 .main-grid {
     background-color: black;
-    min-width: 100vw;
-    min-height: 100vh;
+    /*min-width: 100vw;*/
+    /*min-height: 100vh;*/
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -71,7 +80,7 @@ input[type=number]{
     border-radius: 5px;
 }
 
-.form-header{
+.form-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -94,17 +103,23 @@ input {
 /*form grid*/
 .form-style {
     display: grid;
-    grid-template: 1fr 1fr 1fr/1fr 1fr;
+    grid-template: 1fr 1fr 1fr 1fr/1fr 1fr;
 }
 
 /*grid spans*/
 .personal-info > input:nth-child(5) {
     grid-column: span 2;
 }
-.education-exp > input:first-child, .education-exp > input:last-child {
-    grid-column: span 2;
-}
-.work-exp > input:last-child , .work-exp > input:nth-child(3) {
+
+.education-exp > input:first-child, .education-exp > input:nth-child(4) {
     grid-column: span 2;
 }
 
+.work-exp > input:nth-child(4), .work-exp > input:nth-child(3) {
+    grid-column: span 2;
+}
+
+form>button {
+    grid-column: span 2;
+    margin: .5rem;
+}
