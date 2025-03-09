@@ -2,6 +2,7 @@ import {useState} from 'react'
 import './styles/App.css'
 import {EducationForm} from "./components/EducationForm.jsx";
 import {PersonalInfoFom} from "./components/PersonalInfoFom.jsx";
+import {WorkExpForm} from "./components/WorkExpForm.jsx";
 
 
 function App() {
@@ -9,8 +10,7 @@ function App() {
 
     function addEducationForm() {
         // can only add 3 forms
-        if (educationList.length < 5) {
-            console.log("id inc to: " + educationId)
+        if (educationList.length < 3) {
             setEducationList([...educationList, {
                 id: educationId,
                 instituteName: "Institute Name",
@@ -29,7 +29,29 @@ function App() {
         educationList.length > 1 ? setEducationList([...educationList.slice(0, educationList.length - 1)]) : setEducationList([...educationList.slice(0, educationList.length)]);
     }
 
+    function addWorkForm() {
+        // can only add 3 forms
+        if (workExpData.length < 3) {
+            setWorkExpData([...workExpData, {
+                id: workId,
+                companyName: "Company Name",
+                companyEmail: "Company Email",
+                companyAddress: "Company Address",
+                currentPosition: "Current Position",
+            }])
+            setWorkId(workId + 1);
+        } else {
+            setWorkExpData([...workExpData]);
+        }
+    }
+
+    function removeWorkForm() {
+        // can only delete form if forms are more than one.
+        workExpData.length > 1 ? setWorkExpData([...workExpData.slice(0, workExpData.length - 1)]) : setWorkExpData([...workExpData.slice(0, workExpData.length)]);
+    }
+
     const [educationId, setEducationId] = useState(1);
+    const [workId, setWorkId] = useState(1);
 
     // personal data state to store data from personal form section
     const [personalData, setPersonalData] = useState({
@@ -49,12 +71,20 @@ function App() {
         courseCompleted: "Course Completed"
     }])
 
+    const [workExpData, setWorkExpData] = useState([{
+        id: 0,
+        companyName: "Company Name",
+        companyEmail: "Company Email",
+        companyAddress: "Company Address",
+        currentPosition: "Current Position",
+    }])
+
     return (<>
         {/*1 row 2 cols*/}
         <div className="main-grid">
             {/*3 row 1 cols*/}
             <div className="form-container container-style">
-                <PersonalInfoFom personalData={personalData} setPersonalData={setPersonalData} />
+                <PersonalInfoFom personalData={personalData} setPersonalData={setPersonalData}/>
                 <div>
                     <div className={'form-header'}>
                         <h3>Education</h3>
@@ -79,20 +109,24 @@ function App() {
                     <div className={'form-header'}>
                         <h3>Work Experience</h3>
                         <div>
-                            <button>Remove Work Experience</button>
-                            <button>Add Work Experience</button>
+                            <button onClick={removeWorkForm}>Remove Work Experience</button>
+                            <button onClick={addWorkForm}>Add Work Experience</button>
                         </div>
                     </div>
-                    <form className="work-exp form-style">
-                        <input type={"text"} placeholder="Company Name"/>
-                        <input type={"email"} placeholder="Company Email"/>
-                        <input type={"text"} placeholder="Company Address"/>
-                        <input type={"text"} placeholder="Position"/>
-                        <button type={"submit"}>Submit</button>
-                    </form>
+                    {/*Work Exp form*/}
+
+                    {workExpData.map((workExp) => {
+                        return (<WorkExpForm key={workExp.id}
+                                             id={workExp.id}
+                                             companyName={workExp.companyName}
+                                             companyEmail={workExp.companyEmail}
+                                             currentPosition={workExp.currentPosition}
+                                             companyAddress={workExp.companyAddress}
+                                             workExpData={workExpData}
+                                             setWorkExpData={setWorkExpData}
+                        />);
+                    })}
                 </div>
-
-
             </div>
             {/*3 row 1 cols*/}
             <div className="view-container container-style">
