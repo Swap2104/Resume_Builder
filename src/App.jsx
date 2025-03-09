@@ -3,6 +3,9 @@ import './styles/App.css'
 import {EducationForm} from "./components/EducationForm.jsx";
 import {PersonalInfoFom} from "./components/PersonalInfoFom.jsx";
 import {WorkExpForm} from "./components/WorkExpForm.jsx";
+import {EducationCardView} from "./components/EducationCardView.jsx";
+import {WorkExpCardView} from "./components/WorkExpCardView.jsx";
+import {PersonalInfoCard} from "./components/PersonalInfoCard.jsx";
 
 
 function App() {
@@ -130,18 +133,16 @@ function App() {
             </div>
             {/*3 row 1 cols*/}
             <div className="view-container container-style">
-                <div className="form-view personal-view">
-                    <h3>{personalData.firstName}</h3>
-                    <h3>{personalData.lastName}</h3>
-                    <h3>{personalData.email}, {personalData.position}, {personalData.number}</h3>
-                </div>
+                <PersonalInfoCard/>
                 <div className="form-view education-view">
-                    <h3>Institute name</h3>
-                    <h3> Institute email, Institute address, course</h3>
+                    <h3>Education</h3>
+                    <EducationCardView/>
+                    <EducationCardView/>
                 </div>
                 <div className="form-view exp-view">
-                    <h3>Co name</h3>
-                    <h3> CO email, CO address, Position</h3>
+                    <h3>Work Experience</h3>
+                    <WorkExpCardView/>
+                    <WorkExpCardView/>
                 </div>
             </div>
         </div>

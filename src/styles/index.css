@@ -58,19 +58,22 @@ body {
 .form-container, .view-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
 }
 
-.view-container {
-    max-height: 95vh;
+.form-container {
+    grid-template-rows: auto;
+    row-gap: 1rem;
 }
+
+.form-container > div {
+    border-radius: .5rem;
+}
+
 
 .container-style {
     background-color: black;
     margin: .7rem;
     padding: .5rem;
-    border-radius: 5px;
-    row-gap: 1rem;
 }
 
 .container-style > div {
@@ -79,7 +82,6 @@ body {
     grid-template-rows: auto;
     background-color: #171717;
     padding: 2rem;
-    border-radius: 5px;
     row-gap: 2rem;
 }
 
@@ -130,4 +132,44 @@ input {
 form > button {
     grid-column: span 2;
     margin: .5rem;
+}
+
+/*view*/
+
+.view-container {
+    max-height: 95vh;
+    /*grid-template-rows: 2fr 3fr 3fr auto;*/
+}
+
+
+.EduCard, .WorkExpCard {
+    background-color: black;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.personal-view {
+    display: grid;
+    grid-template: 3fr 2fr 1fr/ 1fr !important;
+    row-gap: 0 !important;
+    justify-items: center;
+    align-items: center;
+    background-color: #252525 !important;
+    border-radius: .5rem .5rem 0 0;
+}
+
+.personal-view > h1{
+    border-bottom: 2px solid white;
+    padding-bottom: .3rem;
+    align-self:end ;
+}
+
+.personal-view > h2{
+    /*border-bottom: 2px solid white;*/
+    padding-top: .5rem !important;
+    padding-bottom: 1.5rem;
+}
+
+.exp-view {
+    border-radius: 0 0 .5rem .5rem;
 }
