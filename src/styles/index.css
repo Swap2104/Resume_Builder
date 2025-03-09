@@ -32,6 +32,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+/*for firefox*/
 input[type=number] {
     -moz-appearance: textfield;
 }
@@ -68,7 +69,6 @@ body {
 .form-container > div {
     border-radius: .5rem;
 }
-
 
 .container-style {
     background-color: black;
@@ -138,9 +138,7 @@ form > button {
 
 .view-container {
     max-height: 95vh;
-    /*grid-template-rows: 2fr 3fr 3fr auto;*/
 }
-
 
 .EduCard, .WorkExpCard {
     background-color: black;
@@ -158,13 +156,13 @@ form > button {
     border-radius: .5rem .5rem 0 0;
 }
 
-.personal-view > h1{
+.personal-view > h1 {
     border-bottom: 2px solid white;
     padding-bottom: .3rem;
-    align-self:end ;
+    align-self: end;
 }
 
-.personal-view > h2{
+.personal-view > h2 {
     /*border-bottom: 2px solid white;*/
     padding-top: .5rem !important;
     padding-bottom: 1.5rem;
