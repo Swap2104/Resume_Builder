@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import './styles/App.css'
 import {EducationForm} from "./components/EducationForm.jsx";
+import {PersonalInfoFom} from "./components/PersonalInfoFom.jsx";
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
         if (educationList.length < 5) {
             console.log("id inc to: " + educationId)
             setEducationList([...educationList, {
-                id: educationId, instituteName: "Institute Name",
+                id: educationId,
+                instituteName: "Institute Name",
                 instituteEmail: "Institute Email",
                 instituteAddress: "Institute Address",
                 courseCompleted: "Course Completed"
@@ -47,34 +49,12 @@ function App() {
         courseCompleted: "Course Completed"
     }])
 
-    // Stores data from personal info form into state var
-    function handlePersonalInfo(formData) {
-        setPersonalData({
-            firstName: formData.get('firstName'),
-            lastName: formData.get('lastName'),
-            email: formData.get('email'),
-            position: formData.get('position'),
-            number: formData.get('number')
-        })
-    }
-
     return (<>
         {/*1 row 2 cols*/}
         <div className="main-grid">
             {/*3 row 1 cols*/}
             <div className="form-container container-style">
-                <div>
-                    <h3>Personal Information</h3>
-
-                    <form className="personal-info form-style" action={handlePersonalInfo}>
-                        <input required={true} type={"text"} name={'firstName'} placeholder={personalData.firstName}/>
-                        <input required={true} type={"text"} name={'lastName'} placeholder={personalData.lastName}/>
-                        <input required={true} type={"email"} name={'email'} placeholder={personalData.email}/>
-                        <input required={true} type={"number"} name={'number'} placeholder={personalData.number}/>
-                        <input required={true} type={"text"} name={'position'} placeholder={personalData.position}/>
-                        <button type={"submit"} onSubmit={e => e.preventDefault()}>Submit</button>
-                    </form>
-                </div>
+                <PersonalInfoFom personalData={personalData} setPersonalData={setPersonalData} />
                 <div>
                     <div className={'form-header'}>
                         <h3>Education</h3>
@@ -98,7 +78,10 @@ function App() {
                 <div>
                     <div className={'form-header'}>
                         <h3>Work Experience</h3>
-                        <button>Add Work Experience</button>
+                        <div>
+                            <button>Remove Work Experience</button>
+                            <button>Add Work Experience</button>
+                        </div>
                     </div>
                     <form className="work-exp form-style">
                         <input type={"text"} placeholder="Company Name"/>
