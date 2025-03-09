@@ -3,9 +3,9 @@ import './styles/App.css'
 import {EducationForm} from "./components/EducationForm.jsx";
 import {PersonalInfoFom} from "./components/PersonalInfoFom.jsx";
 import {WorkExpForm} from "./components/WorkExpForm.jsx";
-import {EducationCardView} from "./components/EducationCardView.jsx";
-import {WorkExpCardView} from "./components/WorkExpCardView.jsx";
 import {PersonalInfoCard} from "./components/PersonalInfoCard.jsx";
+import {EducationView} from "./components/EducationView.jsx";
+import {WorkExpView} from "./components/WorkExpView.jsx";
 
 
 function App() {
@@ -131,19 +131,10 @@ function App() {
                     })}
                 </div>
             </div>
-            {/*3 row 1 cols*/}
             <div className="view-container container-style">
-                <PersonalInfoCard/>
-                <div className="form-view education-view">
-                    <h3>Education</h3>
-                    <EducationCardView/>
-                    <EducationCardView/>
-                </div>
-                <div className="form-view exp-view">
-                    <h3>Work Experience</h3>
-                    <WorkExpCardView/>
-                    <WorkExpCardView/>
-                </div>
+                <PersonalInfoCard personalData={personalData} />
+                <EducationView educationData={educationList} />
+                <WorkExpView workExpData={workExpData} />
             </div>
         </div>
     </>)
