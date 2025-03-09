@@ -25,10 +25,10 @@ export function WorkExpForm({
     }
 
     return (<form key={crypto.randomUUID()} className="work-exp form-style" action={handleWorkExpData}>
-        <input type={"text"} name={"companyName"} placeholder={companyName}/>
-        <input type={"email"} name={"companyEmail"} placeholder={companyEmail}/>
-        <input type={"text"} name={"companyAddress"} placeholder={companyAddress}/>
-        <input type={"text"} name={"currentPosition"} placeholder={currentPosition}/>
+        <input required={true}  type={"text"} name={"companyName"} placeholder={companyName}/>
+        <input required={true}  type={"email"} name={"companyEmail"} placeholder={companyEmail}/>
+        <input  required={true} type={"text"} name={"companyAddress"} placeholder={companyAddress}/>
+        <input required={true}  type={"text"} name={"currentPosition"} placeholder={currentPosition}/>
         <button type={"submit"}>Submit</button>
     </form>);
 }

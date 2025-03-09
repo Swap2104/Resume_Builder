@@ -26,10 +26,10 @@ export function EducationForm({
     }
 
     return (<form key={crypto.randomUUID()} className="education-exp form-style" action={handleEducationInfo}>
-        <input type={"text"} name={"instituteName"} placeholder={instituteName}/>
-        <input type={"email"} name={"instituteEmail"} placeholder={instituteEmail}/>
-        <input type={"text"} name={"instituteAddress"} placeholder={instituteAddress}/>
-        <input type={"text"} name={"courseCompleted"} placeholder={courseCompleted}/>
+        <input required={true}  type={"text"} name={"instituteName"} placeholder={instituteName}/>
+        <input required={true} type={"email"} name={"instituteEmail"} placeholder={instituteEmail}/>
+        <input required={true} type={"text"} name={"instituteAddress"} placeholder={instituteAddress}/>
+        <input required={true} type={"text"} name={"courseCompleted"} placeholder={courseCompleted}/>
         <button type={"submit"}>Submit</button>
     </form>);
 }

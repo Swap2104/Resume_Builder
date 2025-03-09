@@ -113,7 +113,6 @@ input {
 .form-style {
     display: grid;
     grid-template: 1fr 1fr 1fr 1fr/1fr 1fr;
-    /*row-gap: 2rem;*/
 }
 
 /*grid spans*/
