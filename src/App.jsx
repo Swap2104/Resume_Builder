@@ -5,8 +5,29 @@ import {EducationForm} from "./components/EducationForm.jsx";
 
 function App() {
     // stores id's for educationList state
-    let educationId = 0;
 
+    function addEducationForm() {
+        // can only add 3 forms
+        if (educationList.length < 5) {
+            console.log("id inc to: " + educationId)
+            setEducationList([...educationList, {
+                id: educationId, instituteName: "Institute Name",
+                instituteEmail: "Institute Email",
+                instituteAddress: "Institute Address",
+                courseCompleted: "Course Completed"
+            }])
+            setEducationId(educationId + 1);
+        } else {
+            setEducationList([...educationList]);
+        }
+    }
+
+    function removeEducationForm() {
+        // can only delete form if forms are more than one.
+        educationList.length > 1 ? setEducationList([...educationList.slice(0, educationList.length - 1)]) : setEducationList([...educationList.slice(0, educationList.length)]);
+    }
+
+    const [educationId, setEducationId] = useState(1);
 
     // personal data state to store data from personal form section
     const [personalData, setPersonalData] = useState({
@@ -17,6 +38,7 @@ function App() {
         position: "Current Position"
     })
 
+    //Store the data from all the education exp form in array of objs
     const [educationList, setEducationList] = useState([{
         id: 0,
         instituteName: "Institute Name",
@@ -34,28 +56,6 @@ function App() {
             position: formData.get('position'),
             number: formData.get('number')
         })
-    }
-
-    function addEducationForm() {
-        // can only add 3 forms
-        if (educationList.length < 3) {
-            educationId += 1
-            setEducationList([...educationList, {
-                id: educationId, instituteName: "Institute Name",
-                instituteEmail: "Institute Email",
-                instituteAddress: "Institute Address",
-                courseCompleted: "Course Completed"
-            }])
-        } else {
-            setEducationList([...educationList]);
-        }
-        console.log(educationList)
-    }
-
-    function removeEducationForm() {
-        // can only delete form if forms are more than one.
-        educationList.length > 1 ? setEducationList([...educationList.slice(0, educationList.length - 1)]) : setEducationList([...educationList.slice(0, educationList.length)]);
-        // console.log(educationList.length)
     }
 
     return (<>
@@ -85,11 +85,14 @@ function App() {
                     </div>
                     {/*Education form*/}
                     {educationList.map(education => {
-                        return (<EducationForm id={education.id}
+                        return (<EducationForm key={education.id} id={education.id}
                                                instituteName={education.instituteName}
                                                instituteAddress={education.instituteAddress}
                                                instituteEmail={education.instituteEmail}
-                                               courseCompleted={education.courseCompleted}/>);
+                                               courseCompleted={education.courseCompleted}
+                                               setEducationList={setEducationList}
+                                               educationList={educationList}
+                        />);
                     })}
                 </div>
                 <div>
