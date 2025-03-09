@@ -1,9 +1,9 @@
-export function WorkExpCardView() {
+export function WorkExpCardView({key, workExp}) {
     return (
-        <div className={"WorkExpCard"}>
-            <h2>Position</h2>
-            <p>Company Name • Location</p>
-            <p>Email</p>
+        <div key={key} className={"WorkExpCard"}>
+            <h2>{workExp.currentPosition}</h2>
+            <p>{`${workExp.companyName} • ${workExp.companyAddress}`}</p>
+            <p>{workExp.companyEmail}</p>
         </div>
     );
 }

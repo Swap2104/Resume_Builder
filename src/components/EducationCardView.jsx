@@ -1,9 +1,9 @@
-export function EducationCardView() {
+export function EducationCardView({key, education}) {
     return (
-        <div className={"EduCard"}>
-            <h2>Degree</h2>
-            <p>Institute Name • Location</p>
-            <p>Email</p>
+        <div key={key} className={"EduCard"}>
+            <h2>{education.courseCompleted}</h2>
+            <p>{`${education.instituteName} • ${education.instituteAddress}`}</p>
+            <p>{education.instituteEmail}</p>
         </div>
     );
 }

@@ -19,7 +19,7 @@ function App() {
                 instituteName: "Institute Name",
                 instituteEmail: "Institute Email",
                 instituteAddress: "Institute Address",
-                courseCompleted: "Course Completed"
+                courseCompleted: "Degree"
             }])
             setEducationId(educationId + 1);
         } else {
@@ -71,7 +71,7 @@ function App() {
         instituteName: "Institute Name",
         instituteEmail: "Institute Email",
         instituteAddress: "Institute Address",
-        courseCompleted: "Course Completed"
+        courseCompleted: "Degree"
     }])
 
     const [workExpData, setWorkExpData] = useState([{
